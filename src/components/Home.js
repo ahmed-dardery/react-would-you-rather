@@ -1,11 +1,11 @@
 import React, {Component} from 'react';
 import {connect} from "react-redux";
-import {Redirect} from "react-router-dom";
+import {Link, Redirect} from "react-router-dom";
 import QuestionBox from "./QuestionBox";
 import {findPick} from "../utils/helper";
 
 class Home extends Component {
-    state={
+    state = {
         tab: 0
     };
 
@@ -14,23 +14,35 @@ class Home extends Component {
 
         const {answered, unanswered, questions, users} = this.props;
 
-        const lister = (list, done) => (list.map(q => {
-                const ques = questions[q.id];
-                const auth = users[ques.author];
+        const lister = (list, done) => {
+            if (list.length === 0)
                 return (
-                    <li key={q.id}>
-                        <QuestionBox question={ques} author={auth} answered={done}/>
-                    </li>
+                    <div className="block-content-center">
+                        No questions! Why not <Link to='/add'>add a new one</Link>?
+                    </div>
                 );
-            }
-        ));
+            return list.map(q => {
+                    const ques = questions[q.id];
+                    const auth = users[ques.author];
+                    return (
+                        <li key={q.id}>
+                            <QuestionBox question={ques} author={auth} answered={done}/>
+                        </li>
+                    );
+                }
+            )
+        };
 
         const {tab} = this.state;
         return (
             <div className="window">
                 <div className="tab-bar">
-                    <button className={`tab-link ${tab===0&&'active'}`} onClick={() => this.setState({tab: 0})}>Unanswered</button>
-                    <button className={`tab-link ${tab===1&&'active'}`} onClick={() => this.setState({tab: 1})}>Answered</button>
+                    <button className={`tab-link ${tab === 0 && 'active'}`}
+                            onClick={() => this.setState({tab: 0})}>Unanswered
+                    </button>
+                    <button className={`tab-link ${tab === 1 && 'active'}`}
+                            onClick={() => this.setState({tab: 1})}>Answered
+                    </button>
                 </div>
                 {tab === 0 ?
                     <div className='tab-window'>
