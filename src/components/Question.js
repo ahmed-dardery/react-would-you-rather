@@ -3,34 +3,35 @@ import {Redirect} from "react-router-dom";
 import {connect} from "react-redux";
 import {findPick} from "../utils/helper";
 import Block from "./Block";
+import {handleAnswerQuestion} from "../actions/questions";
 
 const ProgressBar = ({option, total}) => {
     const votes = option.votes.length;
     const p = votes * 100 / total;
     const percent = `${p}%`;
 
-    if (p >= 10)
-        return (
-            <div>
-                {option.text}
-                <div className="progress-border">
-                    <div style={{width: percent}} className="progress-fill">{percent}</div>
-                </div>
-                <div className="progress-text">{`${votes} out of ${total} votes`}</div>
+    return (
+        <div>
+            {option.text}
+            <div className="progress-border">
+                {!(p >= 10) && <div style={{width: '100%', position: 'absolute'}}>{percent}</div>}
+                <div style={{width: percent}} className="progress-fill">{(p >= 10) && percent}</div>
             </div>
-        );
-    else
-        return (
-            <div>
-                {option.text}
-                <div className="progress-border">
-                    <div style={{width: '100%', position: 'absolute'}}>{percent}</div>
-                    <div style={{width: percent}} className="progress-fill"/>
-                </div>
-                <div className="progress-text">{`${votes} out of ${total} votes`}</div>
-            </div>
-        );
+            <div className="progress-text">{`${votes} out of ${total} votes`}</div>
+        </div>
+    );
 };
+
+const QuestionOption = ({selected, option, text, callback}) => (
+    <div>
+        <input checked={selected === option}
+               onChange={callback}
+               className="block-option-radio" type="radio"
+               value={option} id={option}/>
+        <label className="block-option-label"
+               htmlFor={option}>{text}</label>
+    </div>
+);
 
 class Question extends Component {
     state = {
@@ -38,6 +39,15 @@ class Question extends Component {
     };
     onChange = (e) => {
         this.setState({selected: e.target.value});
+    };
+    onClick = (e) => {
+        e.preventDefault();
+        if (this.state.selected === null) return;
+
+        const {authedUser} = this.props;
+        const qid = this.props.question.id;
+        const answer = this.state.selected ? 'optionOne' : 'optionTwo';
+        this.props.dispatch(handleAnswerQuestion({authedUser, qid, answer}))
     };
 
     render() {
@@ -50,25 +60,12 @@ class Question extends Component {
         const questionAnswer = () => (<Fragment>
             <h3>Would you rather</h3>
             <form>
-                <div>
-                    <input checked={selected === "One"}
-                           onChange={this.onChange}
-                           className="block-option-radio" type="radio"
-                           value="One" id="op1"/>
-                    <label className="block-option-label"
-                           htmlFor="op1">{question.optionOne.text}</label>
-                </div>
+                <QuestionOption selected={selected} option='One' text={question.optionOne.text}
+                                callback={this.onChange}/>
                 <p className='block-content-center'>Or</p>
-                <div>
-                    <input checked={selected === "Two"}
-                           onChange={this.onChange}
-                           className="block-option-radio" type="radio"
-                           value="Two"
-                           id="op2"/>
-                    <label className="block-option-label"
-                           htmlFor="op2">{question.optionOne.text}</label>
-                </div>
-                <button disabled={!selected} className='block-content-button'>Vote</button>
+                <QuestionOption selected={selected} option='Two' text={question.optionTwo.text}
+                                callback={this.onChange}/>
+                <button onClick={this.onClick} disabled={!selected} className='block-content-button'>Vote</button>
             </form>
         </Fragment>);
 
