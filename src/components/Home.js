@@ -12,13 +12,13 @@ class Home extends Component {
                 <div>
                     <div>Answered</div>
                     <ul>
-                        {answered.map(q => <li key={q}>{questions[q].author}</li>)}
+                        {answered.map(q => <li key={q.id}>{questions[q.id].author}</li>)}
                     </ul>
                 </div>
                 <div>
                     <div>Unanswered</div>
                     <ul>
-                        {unanswered.map(q => <li key={q}>{questions[q].author}</li>)}
+                        {unanswered.map(q => <li key={q.id}>{questions[q.id].author}</li>)}
                     </ul>
                 </div>
             </div>
@@ -37,10 +37,10 @@ function mapStateToProps({authedUser, users, questions}) {
 
     let answered = [];
     let unanswered = [];
-    Object.keys(questions).forEach(key => {
-        const pick = findPick(questions[key]);
-        if (pick !== 0) answered.push({key, pick});
-        else unanswered.push(key);
+    Object.keys(questions).forEach(id => {
+        const choice = findPick(questions[id]);
+        if (choice !== 0) answered.push({id, choice});
+        else unanswered.push({id, choice: 0});
     });
     return {
         authedUser,
