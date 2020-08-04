@@ -1,9 +1,8 @@
-import React, {Component, Fragment} from 'react';
-import {Redirect} from "react-router-dom";
+import React, {Component} from 'react';
+import {Redirect, withRouter} from "react-router-dom";
 import {connect} from "react-redux";
 import Block from "./Block";
 import {handleAddQuestion} from "../actions/questions";
-import {withRouter} from "react-router-dom";
 
 class NewQuestion extends Component {
     state = {

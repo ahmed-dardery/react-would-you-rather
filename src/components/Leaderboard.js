@@ -11,14 +11,15 @@ class Leaderboard extends Component {
             <div className="window">
                 <ol className='view-block'>
 
-                    {userIds.map((id,i) => {
+                    {userIds.map((id, i) => {
                         const user = users[id];
                         const answers = Object.keys(user.answers).length;
                         const questions = user.questions.length;
 
                         return (
                             <li key={id}>
-                                <Block centerTitle corner={nth(i+1)} imageInfo={{url: user.avatarURL, alt: user.name}} title={user.name}
+                                <Block centerTitle corner={nth(i + 1)} imageInfo={{url: user.avatarURL, alt: user.name}}
+                                       title={user.name}
                                        innerContent={
                                            <Fragment>
                                                <div>Answered Questions: {answers}</div>
