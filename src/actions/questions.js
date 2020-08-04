@@ -19,13 +19,14 @@ function addQuestion(question) {
     }
 }
 
-//{optionOneText, optionTwoText, author}
+//{optionOneText, optionTwoText, author, callback}
 export function handleAddQuestion(info) {
     return (dispatch) => {
         dispatch(showLoading());
         saveQuestion(info).then(question => {
             dispatch(addQuestion(question));
             dispatch(hideLoading());
+            info.callback(question.id);
         }).catch(() => {
             alert("An error occurred, please retry again.");
         })
