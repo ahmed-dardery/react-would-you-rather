@@ -16,17 +16,18 @@ class Nav extends Component {
         const {user, authedUser} = this.props;
         return (
             <ul className="nav-bar">
-                <li>
+                <span className="nav-bar-title nav-bar-left">Would You Rather?</span>
+                <li className="nav-bar-left">
                     <NavLink className="nav-bar-link" exact to='/' activeClassName='nav-bar-active'>Home</NavLink>
                 </li>
-                <li>
+                <li className="nav-bar-left">
                     <NavLink className="nav-bar-link" to="/add" activeClassName='nav-bar-active'>New Question</NavLink>
                 </li>
-                <li>
+                <li className="nav-bar-left">
                     <NavLink className="nav-bar-link" to="/leaderboard"
                              activeClassName='nav-bar-active'>Leaderboard</NavLink>
                 </li>
-                <li className="nav-bar-user">
+                <li className="nav-bar-right">
                     {authedUser ?
                         <span className="nav-bar-link"
                               onClick={this.logOut_click}>Logout</span>
@@ -35,7 +36,7 @@ class Nav extends Component {
                     }
 
                 </li>
-                {authedUser && <span className="nav-bar-text">Hello {user.name}</span>}
+                {authedUser && <span className="nav-bar-text nav-bar-right">Hello {user ? user.name : authedUser}</span>}
             </ul>
         )
     }
