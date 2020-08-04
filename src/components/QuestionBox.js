@@ -7,7 +7,7 @@ class QuestionBox extends Component {
         const {question, author, answered} = this.props;
         const fullText = `${question.optionOne.text} or ${question.optionTwo.text}`;
         const displayText = fullText.length > 20 ? `${fullText.substr(0, 27)}...` : fullText;
-        const buttonText = answered ? 'Go to poll' : 'Answer';
+        const buttonText = answered ? 'Go to poll' : 'View';
         return (
             <Block title={`${author.name} asks`} imageInfo={{url: author.avatarURL, alt: author.name}} innerContent={
                 <Fragment>
