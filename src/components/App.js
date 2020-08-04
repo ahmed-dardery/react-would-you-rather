@@ -26,7 +26,7 @@ class App extends Component {
                     {!loading && <Switch>
                         <Route exact path='/' component={Home}/>
                         <Route path='/q/:id' component={Question}/>
-                        <Route exact path='/new' component={NewQuestion}/>
+                        <Route exact path='/add' component={NewQuestion}/>
                         <Route exact path='/leaderboard' component={Leaderboard}/>
                         <Route exact path='/login' component={Login}/>
                         <Route component={NotFound}/>
