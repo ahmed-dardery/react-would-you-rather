@@ -40,4 +40,4 @@ class App extends Component {
     }
 }
 
-export default connect(({loadingBar}) => ({loading: loadingBar.default}))(App);
+export default connect(({loadingBar}) => ({loading: loadingBar.default !== 0}))(App);
