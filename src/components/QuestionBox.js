@@ -12,7 +12,7 @@ class QuestionBox extends Component {
             <Block title={`${author.name} asks`} imageInfo={{url: author.avatarURL, alt: author.name}} innerContent={
                 <Fragment>
                     <h3>Would you rather</h3>
-                    <p>{displayText}</p>
+                    {displayText}
                     <Link to={`/q/${question.id}`}>
                         <button className='block-content-button'>{buttonText}</button>
                     </Link>
