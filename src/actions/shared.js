@@ -1,5 +1,5 @@
 import {hideLoading, showLoading} from "react-redux-loading";
-import {getInitialData} from "../api/api";
+import {getInitialData} from "../utils/api";
 import {receiveUsers} from "./users";
 import {receiveQuestions} from "./questions";
 

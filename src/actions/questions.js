@@ -1,5 +1,5 @@
 import {hideLoading, showLoading} from "react-redux-loading";
-import {saveQuestion, saveQuestionAnswer} from "../api/api";
+import {saveQuestion, saveQuestionAnswer} from "../utils/api";
 
 export const RECEIVE_QUESTIONS = 'RECEIVE_QUESTIONS';
 
