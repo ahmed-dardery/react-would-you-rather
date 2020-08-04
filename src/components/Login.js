@@ -6,7 +6,6 @@ import {Redirect} from "react-router-dom";
 class Login extends Component {
     state = {
         selected: 'none',
-        redirect: false
     };
 
     login_click = (e) => {
@@ -14,8 +13,6 @@ class Login extends Component {
 
         const {selected} = this.state;
         this.props.dispatch(setAuthedUser(selected));
-
-        this.setState({redirect: true});
     };
 
     select_change = (e) => {
@@ -23,8 +20,9 @@ class Login extends Component {
     };
 
     render() {
-        const {selected, redirect} = this.state;
-        if (redirect) return <Redirect to='/'/>;
+        const {selected} = this.state;
+        const {authedUser} = this.props;
+        if (authedUser) return <Redirect to='/'/>;
 
         const {users} = this.props;
         return (
@@ -44,4 +42,4 @@ class Login extends Component {
     }
 }
 
-export default connect(({users}) => ({users}))(Login);
+export default connect(({users, authedUser}) => ({users, authedUser}))(Login);
