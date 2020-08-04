@@ -7,7 +7,7 @@ class Leaderboard extends Component {
         return (
             <div>
                 <ol>
-                    {userIds.map(id => <li>{users[id].name}</li>)}
+                    {userIds.map(id => <li key={id}>{users[id].name}</li>)}
                 </ol>
             </div>
         )

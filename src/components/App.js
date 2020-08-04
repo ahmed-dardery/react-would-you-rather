@@ -23,14 +23,17 @@ class App extends Component {
                 <Fragment>
                     <LoadingBar/>
                     <Nav/>
-                    {!loading && <Switch>
-                        <Route exact path='/' component={Home}/>
-                        <Route path='/q/:id' component={Question}/>
-                        <Route exact path='/add' component={NewQuestion}/>
-                        <Route exact path='/leaderboard' component={Leaderboard}/>
-                        <Route exact path='/login' component={Login}/>
-                        <Route component={NotFound}/>
-                    </Switch>}
+                    <div className="body">
+                        {!loading && <Switch>
+                            <Route exact path='/' component={Home}/>
+                            <Route path='/q/:id' component={Question}/>
+                            <Route exact path='/add' component={NewQuestion}/>
+                            <Route exact path='/leaderboard' component={Leaderboard}/>
+                            <Route exact path='/login' component={Login}/>
+                            <Route component={NotFound}/>
+                        </Switch>
+                        }
+                    </div>
                 </Fragment>
             </BrowserRouter>
         );
