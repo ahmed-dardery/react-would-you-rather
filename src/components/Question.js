@@ -7,7 +7,7 @@ import {handleAnswerQuestion} from "../actions/questions";
 
 const ProgressBar = ({option, total}) => {
     const votes = option.votes.length;
-    const p = votes * 100 / total;
+    const p = (votes * 100 / total).toFixed(1);
     const percent = `${p}%`;
 
     return (
