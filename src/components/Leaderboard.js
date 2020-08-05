@@ -6,7 +6,6 @@ import {nth} from "../utils/helper";
 class Leaderboard extends Component {
     render() {
         const {userIds, users} = this.props;
-        console.log(users);
         return (
             <div className="window">
                 <ol className='view-block'>

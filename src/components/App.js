@@ -19,7 +19,7 @@ class App extends Component {
     render() {
         const {loading} = this.props;
         return (
-            <BrowserRouter>
+            <BrowserRouter basename={process.env.PUBLIC_URL}>
                 <Fragment>
                     <LoadingBar/>
                     <Nav/>
