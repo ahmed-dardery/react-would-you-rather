@@ -2,9 +2,13 @@ import React, {Component, Fragment} from 'react';
 import {connect} from "react-redux";
 import Block from "./Block";
 import {nth} from "../utils/helper";
+import {Redirect} from "react-router-dom";
 
 class Leaderboard extends Component {
     render() {
+        const {authedUser} = this.props;
+        if (!authedUser) return <Redirect to={{pathname: '/login', state: this.props.location}}/>;
+
         const {userIds, users} = this.props;
         return (
             <div className="window">
@@ -36,7 +40,7 @@ class Leaderboard extends Component {
 }
 
 
-function mapStateToProps({users}) {
+function mapStateToProps({users, authedUser}) {
     let userIds = Object.keys(users);
 
     const score = (user) => (user.questions.length + Object.keys(user.answers).length);
@@ -45,7 +49,8 @@ function mapStateToProps({users}) {
 
     return {
         userIds,
-        users
+        users,
+        authedUser
     }
 }
 
