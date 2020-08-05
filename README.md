@@ -3,6 +3,9 @@
 This is my work on the Would You Rather Project as a part of the Udacity React Nanodegree Course. The design for this was built from scratch, this is my first time designing with css.
 
 It is available on [Github Pages](https://ahmed-dardery.github.io/react-would-you-rather) if you want to test it out!
+
+Remember to clear your javascript cache if you checked it during development.
+
 ## Development
 
 To get started developing right away:
