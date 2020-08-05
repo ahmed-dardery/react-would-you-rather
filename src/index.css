@@ -115,7 +115,7 @@
     border-radius: 5px;
     border: 2px solid #bbb;
     margin: 15px;
-    box-shadow: 5px 5px 15px 0px rgba(0,0,0,0.5);
+    box-shadow: 5px 5px 15px 0px rgba(0, 0, 0, 0.5);
 }
 
 .block-corner {
@@ -290,4 +290,23 @@
 .progress-text {
     text-align: center;
     margin: 5px;
+}
+
+/*---------------------------------------------------------------*/
+
+.error-404 {
+    font-size: 15em;
+    text-align: center;
+}
+
+.error-note {
+    text-align: center;
+    font-weight: bold;
+    font-size: 2em;
+    margin-bottom: 1em;
+}
+
+.error-msg {
+    text-align: center;
+    color: #777;
 }
