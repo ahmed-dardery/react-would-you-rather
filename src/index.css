@@ -107,6 +107,7 @@
     list-style-type: none;
     margin: 0;
     padding: 0;
+
 }
 
 .block-box {
@@ -114,6 +115,7 @@
     border-radius: 5px;
     border: 2px solid #bbb;
     margin: 15px;
+    box-shadow: 5px 5px 15px 0px rgba(0,0,0,0.5);
 }
 
 .block-corner {
@@ -238,6 +240,14 @@
 
 /*---------------------------------------------------------------*/
 
+.progress-box {
+    position: relative;
+    border: 1px solid #333;
+    border-radius: 2px;
+    padding: 10px;
+    box-shadow: 0 0 15px 1px rgba(0, 0, 0, 0.5);
+}
+
 .progress-border {
     position: relative;
     border: 1px solid #333;
@@ -246,15 +256,35 @@
     line-height: 35px;
     text-align: center;
     vertical-align: middle;
+    margin-top: 15px;
 }
 
 .progress-fill {
     height: 35px;
     line-height: 35px;
-    background-color: #c24c57;
+    background-color: #c2443d;
     text-align: center;
     vertical-align: middle;
     color: white;
+    box-shadow: 0 0 12px 1px rgba(194, 68, 61, 1);
+}
+
+
+.progress-corner {
+    position: absolute;
+    right: -15px;
+    top: -15px;
+    width: 50px;
+    height: 50px;
+    line-height: 50px;
+    font-size: large;
+    font-weight: bold;
+    border-radius: 50px;
+    background-color: #35bf50;
+    color: white;
+    text-align: center;
+    vertical-align: middle;
+    border: 1px solid #bbb;
 }
 
 .progress-text {
