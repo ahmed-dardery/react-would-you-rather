@@ -71,6 +71,9 @@ function mapStateToProps({authedUser, users, questions}) {
         if (choice !== 0) answered.push({id, choice});
         else unanswered.push({id, choice: 0});
     });
+    const comp = (a, b) => (questions[b.id].timestamp - questions[a.id].timestamp);
+    answered.sort(comp);
+    unanswered.sort(comp);
     return {
         authedUser,
         users,

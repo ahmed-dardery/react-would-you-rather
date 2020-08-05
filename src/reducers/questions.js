@@ -6,7 +6,7 @@ export default function questions(state = {}, action) {
             return {...action.questions};
         case ADD_QUESTION:
             return {
-                ...questions,
+                ...state,
                 [action.question.id]: action.question
             };
         case ANSWER_QUESTION:
