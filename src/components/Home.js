@@ -10,9 +10,9 @@ class Home extends Component {
     };
 
     render() {
-        if (!this.props.authedUser) return <Redirect to='/login'/>;
+        const {answered, unanswered, questions, users, authedUser} = this.props;
 
-        const {answered, unanswered, questions, users} = this.props;
+        if (!authedUser) return <Redirect to={{pathname: '/login', state: this.props.location}}/>;
 
         const lister = (list, done) => {
             if (list.length === 0)

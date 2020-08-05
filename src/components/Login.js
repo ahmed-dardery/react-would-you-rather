@@ -23,7 +23,7 @@ class Login extends Component {
     render() {
         const {selected} = this.state;
         const {authedUser} = this.props;
-        if (authedUser) return <Redirect to='/'/>;
+        if (authedUser) return <Redirect to={this.props.location.state || '/'}/>;
 
         const {users} = this.props;
         return (
@@ -39,7 +39,8 @@ class Login extends Component {
                                 )
                             }
                         </select>
-                        <button className='block-content-button' disabled={selected === 'none'} type="submit">Login</button>
+                        <button className='block-content-button' disabled={selected === 'none'} type="submit">Login
+                        </button>
                     </form>
                 }/>
             </div>

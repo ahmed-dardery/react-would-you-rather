@@ -7,9 +7,9 @@ class Nav extends Component {
     logOut_click = (e) => {
         e.preventDefault();
 
-        const {dispatch} = this.props;
+        const {dispatch, history} = this.props;
         dispatch(clearAuthedUser());
-        this.props.history.push('/login');
+        history.push('/login', history.location);
     };
 
     render() {

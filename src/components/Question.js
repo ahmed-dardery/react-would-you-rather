@@ -55,8 +55,8 @@ class Question extends Component {
     render() {
         const {question, author, choice, authedUser} = this.props;
         const {selected} = this.state;
-        if (!authedUser) return <Redirect to='/'/>;
 
+        if (!authedUser) return <Redirect to={{pathname: '/login', state: this.props.location}}/>;
         if (!question) return <Redirect to='/404'/>;
 
         const questionAnswer = () => (<Fragment>

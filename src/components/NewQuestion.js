@@ -22,7 +22,9 @@ class NewQuestion extends Component {
     };
 
     render() {
-        if (!this.props.authedUser) return <Redirect to='/login'/>;
+        const {authedUser} = this.props;
+        if (!authedUser) return <Redirect to={{pathname: '/login', state: this.props.location}}/>;
+
         const {optionOneText, optionTwoText} = this.state;
         return (
             <div className="window">
